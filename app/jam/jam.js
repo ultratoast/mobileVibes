@@ -9,8 +9,8 @@ angular.module('mobileVibes.jam', ['ngRoute'])
   });
 }])
 
-.controller('Instruments', function() {
-	this.instruments = [
+.controller('Instruments', function($scope) {
+	$scope.instruments = [
 			{
 				'name':'Snare','id':'drum-snare'
 			},

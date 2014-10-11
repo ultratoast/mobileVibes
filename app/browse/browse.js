@@ -9,13 +9,13 @@ angular.module('mobileVibes.browse', ['ngRoute'])
   });
 }])
 
-.controller('Friends', function() {
-		this.friends = [
-			{
-				'name':'Will','username':'willmease','location':'Los Angeles'
-			},
-			{
-				'name':'Edu','username':'eduard','location':'Holland'
-			}
-		]
+.controller('Friends', function($scope) {
+	$scope.friends = [
+		{
+			'name':'Will','username':'willmease','location':'Los Angeles'
+		},
+		{
+			'name':'Edu','username':'eduard','location':'Holland'
+		}
+	]
 });

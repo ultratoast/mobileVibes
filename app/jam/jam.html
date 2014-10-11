@@ -5,7 +5,7 @@
 	<div ng-swipeRight="showSettings()" ng-controller="Instruments" class="jam-panel" id="jam-instrument">
 		<ul class="instrument-grid">
 			<li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
-				<button ng-touch="triggerInstrument({{instrument.id}})"></button>
+				<button ng-click="triggerInstrument({{instrument.id}})"></button>
 			</li>
 		</ul>
 	</div>
