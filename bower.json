@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "name": "mobileVibes",
+  "description": "A mobile ui for jellyvibes",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ultratoast/jvmobile",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "angular-route": "1.2.x",
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
+    "angular-touch": "*",
     "html5-boilerplate": "~4.3.0"
   }
 }
