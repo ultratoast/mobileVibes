@@ -4,11 +4,12 @@
 angular.module('mobileVibes', [
   'ngRoute',
   'ngTouch',
+  'ngResource',
   'mobileVibes.login',
   'mobileVibes.browse',
   'mobileVibes.jam',
-  'mobileVibes.version'
+  'mobileVibesServices'
 ]).
-config(['$routeProvider', function() {
-  this.otherwise({redirectTo: '/login'});
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.otherwise({redirectTo: '/login'});
 }]);

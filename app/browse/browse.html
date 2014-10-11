@@ -1,4 +1,8 @@
-<p>This is the partial for Browse View.</p>
-<p>
-  Browse Here!
-</p>
+<div class="browse-wrap" ng-controller="Friends">
+	<strong>My Friends:</strong>
+	<ul class="friends-list">
+		<li ng-repeat="friend in friends">
+			<button ng-click="/jam/{{friend.username}}"><span class="friend-name">{{friend.name}}</span> - <span class="friend-location">{{friend.location}}</span></button>
+		</li>
+	</ul>
+</div>

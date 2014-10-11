@@ -2,13 +2,13 @@
 
 angular.module('mobileVibes.login', ['ngRoute'])
 
-.config(['$routeProvider', function() {
-  this.when('/login', {
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/login', {
     templateUrl: 'login/login.html',
     controller: 'LoginCtrl'
   });
 }])
 
 .controller('LoginCtrl', [function() {
-
+	
 }]);

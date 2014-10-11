@@ -1,0 +1,29 @@
+.jam-wrap {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	.jam-panel {
+
+	}
+	ul.instrument-grid {
+		list-style:none;
+		width: 100%;
+		li {
+			float: left;
+			width: 50%;
+			position: relative;
+			&:after {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				font-size: 20px;
+				margin-left: -10px;
+				font-family: 'FontAwesome';
+				content:'\f10c';
+			}
+		}
+	}
+	video {
+		background-color: black;
+	}
+}

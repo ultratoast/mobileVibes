@@ -1,4 +1,15 @@
-<p>This is the partial for Jam View.</p>
-<p>
- 	Jam Here!
-</p>
+<div class="jam-wrap">
+	<div class="jam-panel" id="jam-video">
+		<video width="100%" id="stream-target"></video>
+	</div>
+	<div ng-swipeRight="showSettings()" ng-controller="Instruments" class="jam-panel" id="jam-instrument">
+		<ul class="instrument-grid">
+			<li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
+				<button ng-touch="triggerInstrument({{instrument.id}})"></button>
+			</li>
+		</ul>
+	</div>
+	<div ng-swipeLeft="showButtons()" class="jam-panel" id="jam-settings">
+		<button class="close-session" ng-click="closeSession()"></button>
+	</div>
+</div>
