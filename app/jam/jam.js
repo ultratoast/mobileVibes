@@ -17,29 +17,32 @@ angular.module('mobileVibes.jam', ['ngRoute'])
 .controller('Instruments', function($scope) {
 	$scope.instruments = [
 			{
-				'name':'Snare','id':'0'
+				'name':'Snare','id':'snare'
 			},
 			{
-				'name':'Kick','id':'1'
+				'name':'Kick','id':'kick'
 			},
 			{
-				'name':'Hi Hat','id':'2'
+				'name':'Hi Hat','id':'hihat'
 			},
 			{
-				'name':'Tom','id':'3'
+				'name':'Tom','id':'tom'
 			}
 		],
 	$scope.triggerInstrument = function(index, key) {
 		//console.log('trigger sample, index '+index+' key '+key)
-	  	var newSource = context.createBufferSource()
-	    newSource.buffer = noteNode[index][key]
+	  	//var newSource = context.createBufferSource()
+	    //newSource.buffer = noteNode[index][key]
 	    // newSource.connect(bus[index].input)
-	    newSource.connect(context.destination)
-	    newSource.start()
-	    newSource.onended = function(){
-	      newSource.stop()
-	    }
-}
+	    //newSource.connect(context.destination)
+	    //newSource.start()
+	    //newSource.onended = function(){
+	    //  newSource.stop()
+	    //}
+	    //console.log('ul.sample-pool#'+index, '.'+key)
+	    $('ul.sample-pool#'+index).find('.'+key)[0].currentTime = 0;
+	    $('ul.sample-pool#'+index).find('.'+key)[0].play()
+	}
 	$scope.panelSwipe = function(target) {
 		$('.jam-panel').addClass('hidden')
 		$('#'+target).fadeIn()

@@ -17,17 +17,72 @@
   <script src="static/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
+<!--   <ul class="menu">
     <li><a href="#/browse">Browse</a></li>
     <li><a href="#/jam">Jam</a></li>
-  </ul>
+  </ul> -->
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
+<!-- 
+  <div class="content-main" ng-view></div> -->
 
-  <div class="content-main" ng-view></div>
+  <script type="text/ng-template" id="/login.html">
+    <p>This is the partial for Login View.</p>
+  </script>
+  <script type="text/ng-template" id="/browse.html">
+    <div class="browse-wrap" ng-controller="Friends">
+      <strong>My Friends:</strong>
+      <ul class="friends-list">
+        <li ng-repeat="friend in friends">
+          <button ng-click="/jam/{{friend.username}}"><span class="friend-name">{{friend.name}}</span> - <span class="friend-location">{{friend.location}}</span></button>
+        </li>
+      </ul>
+    </div>
+  </script>
+
+<script type="text/ng-template" id="/jam.html">
+  <div class="jam-wrap">
+  <div class="jam-panel" id="jam-video">
+    <video width="100%" id="stream-target"></video>
+  </div>
+  <div ng-swipeRight="panelSwipe('jam-settings')" ng-controller="Instruments" class="jam-panel" id="jam-instrument">
+    <ul class="instrument-grid">
+      <li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
+        <button ng-click="triggerInstrument('mine', '{{instrument.id}}')"></button>
+      </li>
+    </ul>
+  </div>
+  <div ng-swipeLeft="panelSwipe('jam-instruments')" class="jam-panel hidden" id="jam-settings">
+    <button class="close-session" ng-click="closeSession()"></button>
+  </div>
+  <ul class="sample-pool" id="mine">
+    <li><audio class="hihat" src="static/sounds/hihats.ogg"></audio></li>
+    <li><audio class="snare" src="static/sounds/snare.ogg"></audio></li>
+    <li><audio class="tom" src="static/sounds/tom.ogg"></audio></li>
+    <li><audio class="kick" src="static/sounds/kick.ogg"></audio></li>
+  </ul>
+  <ul class="sample-pool" id="theirs">
+    <li><audio class="hihat" src="static/sounds/hihats.ogg"></audio></li>
+    <li><audio class="snare" src="static/sounds/snare.ogg"></audio></li>
+    <li><audio class="tom" src="static/sounds/tom.ogg"></audio></li>
+    <li><audio class="kick" src="static/sounds/kick.ogg"></audio></li>
+  </ul>
+</div>
+</script>
+
+
+
+
+<a ng-click="currentTpl='/browse.html'" id="tpl-link">Browse</a>
+<a ng-click="currentTpl='/jam.html'" id="tpl-link">Jam</a>
+<a ng-click="currentTpl='/login.html'" id="tpl-link">Login</a>
+
+
+<div id="tpl-content" ng-include src="currentTpl"></div>
+
 
 
 
@@ -40,5 +95,24 @@
   <script src="login/login.js"></script>
   <script src="browse/browse.js"></script>
   <script src="jam/jam.js"></script>
+
+  <!--<script src="static/js/buffer-loader.js"></script>-->
+  <script>
+  var noteNode = [], 
+    context = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext)();
+   // contextArray = ['static/sounds/hihats.ogg','static/sounds/snare.ogg','static/sounds/tom.ogg','static/sounds/kick.ogg']
+   // finishedLoading = function(bufferList) {
+      //store audio elements in an array in noteNode
+    //  noteNode[0] = bufferList
+    //  noteNode[1] = bufferList
+   // }
+  // bufferLoader = new BufferLoader(
+  //     context,
+  //     contextArray,
+  //     finishedLoading
+  // );
+
+  // bufferLoader.load()
+  </script>
 </body>
 </html>
