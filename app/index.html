@@ -51,7 +51,16 @@
   <div ng-swipeRight="panelSwipe('jam-settings')" ng-controller="Instruments" class="jam-panel" id="jam-instrument">
     <ul class="instrument-grid">
       <li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
-        <button ng-click="triggerInstrument('mine', '{{instrument.id}}')"></button>
+        <button ng-click="triggerInstrument('mine', '{{instrument.id}}')" data-who="mine" data-inst"snare"></button>
+      </li>
+      <li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
+        <button ng-click="triggerInstrument('mine', '{{instrument.id}}')" data-who="mine" data-inst"hihat"></button>
+      </li>
+      <li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
+        <button ng-click="triggerInstrument('mine', '{{instrument.id}}')" data-who="mine" data-inst"kick"></button>
+      </li>
+      <li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
+        <button ng-click="triggerInstrument('mine', '{{instrument.id}}')" data-who="mine" data-inst"tom"></button>
       </li>
     </ul>
   </div>
@@ -113,6 +122,24 @@
   // );
 
   // bufferLoader.load()
+  function triggerInstrument(index, key) {
+    //console.log('trigger sample, index '+index+' key '+key)
+      //var newSource = context.createBufferSource()
+      //newSource.buffer = noteNode[index][key]
+      // newSource.connect(bus[index].input)
+      //newSource.connect(context.destination)
+      //newSource.start()
+      //newSource.onended = function(){
+      //  newSource.stop()
+      //}
+      //console.log('ul.sample-pool#'+index, '.'+key)
+      $('ul.sample-pool#'+index).find('.'+key)[0].currentTime = 0;
+      $('ul.sample-pool#'+index).find('.'+key)[0].play()
+  }
+  $('.instrument-button').click(function(){
+    var $this = $(this), trig = $this.attr('data-inst'), who = $this.attr('data-who');
+    triggerInstrument(who,trig) 
+  })
   </script>
 </body>
 </html>
