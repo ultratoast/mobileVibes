@@ -2,14 +2,45 @@
 	<div class="jam-panel" id="jam-video">
 		<video width="100%" id="stream-target"></video>
 	</div>
-	<div ng-swipeRight="showSettings()" ng-controller="Instruments" class="jam-panel" id="jam-instrument">
+	<div ng-swipeRight="panelSwipe('jam-settings')" ng-controller="Instruments" class="jam-panel" id="jam-instrument">
 		<ul class="instrument-grid">
 			<li ng-repeat="instrument in instruments" class="instrument-button" id="{{ instrument.id }}">
-				<button ng-click="triggerInstrument({{instrument.id}})"></button>
+				<button ng-click="triggerInstrument(0, {{instrument.id}})"></button>
 			</li>
 		</ul>
 	</div>
-	<div ng-swipeLeft="showButtons()" class="jam-panel" id="jam-settings">
+	<div ng-swipeLeft="panelSwipe('jam-instruments')" class="jam-panel hidden" id="jam-settings">
 		<button class="close-session" ng-click="closeSession()"></button>
 	</div>
+	<ul class="sample-pool" id="mine">
+		<!-- <li><audio class="hihat" src="static/sounds/hithats.ogg"></audio></li>
+		<li><audio class="snare" src="static/sounds/snare.ogg"></audio></li>
+		<li><audio class="tom" src="static/sounds/tom.ogg"></audio></li>
+		<li><audio class="kick" src="static/sounds/kick.ogg"></audio></li> -->
+	</ul>
+	<ul class="sample-pool" id="theirs">
+		<!-- <li><audio class="hihat" src="static/sounds/hithats.ogg"></audio></li>
+		<li><audio class="snare" src="static/sounds/snare.ogg"></audio></li>
+		<li><audio class="tom" src="static/sounds/tom.ogg"></audio></li>
+		<li><audio class="kick" src="static/sounds/kick.ogg"></audio></li> -->
+	</ul>
 </div>
+<script src="static/js/buffer-loader.js"></script>
+<script>
+var noteNode = [], 
+	context = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext)(),
+	contextArray = ['static/sounds/hihats.ogg','static/sounds/snare.ogg','static/sounds/tom.ogg','static/sounds/kick.ogg']
+	finishedLoading = function(bufferList) {
+		//store audio elements in an array in noteNode
+		noteNode[0] = bufferList
+		noteNode[1] = bufferList
+		// $('.jamRoom').find('.loader').hide()
+	}
+bufferLoader = new BufferLoader(
+    context,
+    contextArray,
+    finishedLoading
+);
+
+bufferLoader.load()
+</script>
